@@ -1,5 +1,15 @@
 # **Spring-data-jpa-example**
 
+ORM, MySql, @ManyToMany, @ManyToOne, @OneToMany ...
+
+## Get started
+
+* clone : `git clone https://github.com/BuiQuang26/Spring-data-jpa-example.git`
+* build maven: `mvn clean install`
+* run jar file: `java -jar /target/spring-data-jpa-0.0.1-SNAPSHOT.jar`
+* running port: 8080
+* docs api swagger: http://localhost:8080/swagger-ui.html
+
 ## pom.xml
 
 ### maven
@@ -81,6 +91,8 @@
 ### Shop
 
 ```java
+import com.example.springdatajpa.models.Product;
+
 @Entity
 @Getter
 @Setter
@@ -97,14 +109,22 @@ public class Shop {
     @ManyToMany
     @JoinTable(
             name = "shop_product",
-            joinColumns = { @JoinColumn(name = "shop_id") },
-            inverseJoinColumns = { @JoinColumn(name = "product_id") })
+            joinColumns = {@JoinColumn(name = "shop_id")},
+            inverseJoinColumns = {@JoinColumn(name = "product_id")})
     private Set<Product> products = new HashSet<>();
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "owner_id")
     private Owner owner;
 
+    public void addProduct(Product product){
+        this.products.add(product);
+    }
+
+    public void removeProduct(Product product){
+        this.products.remove(product);
+    }
+    
 }
 ```
 
@@ -121,8 +141,9 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
     private String name;
-
+    
     private Integer price;
 
     @ManyToMany(mappedBy = "products")
@@ -145,8 +166,11 @@ public class Owner {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
     private String name;
+    
     private String phone;
+    
     private String email;
 
     @JsonIgnore
@@ -155,3 +179,24 @@ public class Owner {
     
 }
 ```
+
+## application.properties
+
+```text
+#connect mysql
+spring.datasource.url = jdbc:mysql://localhost:3306/jpaTestdb?useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false&useUnicode=yes&characterEncoding=UTF-8
+spring.datasource.username = root
+spring.datasource.password = root
+
+## Hibernate Properties
+# The SQL dialect makes Hibernate generate better SQL for the chosen database
+spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQL8Dialect
+spring.jpa.properties.hibernate.format_sql = true
+
+# = JPA / HIBERNATE
+spring.jpa.show-sql=false
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.generate-ddl=false
+spring.main.allow-bean-definition-overriding=true
+```
+

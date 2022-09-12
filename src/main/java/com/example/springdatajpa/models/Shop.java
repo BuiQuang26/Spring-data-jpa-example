@@ -30,4 +30,11 @@ public class Shop {
     @JoinColumn(name = "owner_id")
     private Owner owner;
 
+    public void addProduct(Product product){
+        this.products.add(product);
+    }
+
+    public void removeProduct(Product product){
+        this.products.remove(product);
+    }
 }
