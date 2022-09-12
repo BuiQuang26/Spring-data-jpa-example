@@ -1,14 +1,12 @@
 package com.example.springdatajpa.controller;
 
 import com.example.springdatajpa.models.Product;
+import com.example.springdatajpa.models.Shop;
 import com.example.springdatajpa.repository.ProductRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "/product")

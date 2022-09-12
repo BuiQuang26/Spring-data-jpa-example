@@ -1,6 +1,5 @@
 package com.example.springdatajpa.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -26,5 +25,9 @@ public class Shop {
             joinColumns = { @JoinColumn(name = "shop_id") },
             inverseJoinColumns = { @JoinColumn(name = "product_id") })
     private Set<Product> products = new HashSet<>();
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "owner_id")
+    private Owner owner;
 
 }
