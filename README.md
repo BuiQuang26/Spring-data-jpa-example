@@ -8,8 +8,7 @@ ORM, MySql, @ManyToMany, @ManyToOne, @OneToMany ...
 * build maven: `mvn clean install`
 * run jar file: `java -jar /target/spring-data-jpa-0.0.1-SNAPSHOT.jar`
 * running port: 8080
-* docs api swagger -> [link](http://localhost:8080/swagger-ui.html)
-
+* docs api swagger -> http://localhost:8080/swagger-ui.html
 ## pom.xml
 
 ### maven
