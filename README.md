@@ -1,4 +1,4 @@
-# **Spring-data-jpa-example**
+# **Spring Boot: Rest Api + Sping data jpa example**
 
 ORM, MySql, @ManyToMany, @ManyToOne, @OneToMany ...
 
