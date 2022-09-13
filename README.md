@@ -8,7 +8,7 @@ ORM, MySql, @ManyToMany, @ManyToOne, @OneToMany ...
 * build maven: `mvn clean install`
 * run jar file: `java -jar /target/spring-data-jpa-0.0.1-SNAPSHOT.jar`
 * running port: 8080
-* docs api swagger: http://localhost:8080/swagger-ui.html
+* docs api swagger -> [link](http://localhost:8080/swagger-ui.html)
 
 ## pom.xml
 
@@ -87,6 +87,10 @@ ORM, MySql, @ManyToMany, @ManyToOne, @OneToMany ...
 ```
 
 ## Entity
+
+### Model relationship
+
+![model](./entity_relationship.png)
 
 ### Shop
 
@@ -199,4 +203,3 @@ spring.jpa.hibernate.ddl-auto=update
 spring.jpa.generate-ddl=false
 spring.main.allow-bean-definition-overriding=true
 ```
-
